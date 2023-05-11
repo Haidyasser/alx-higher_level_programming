@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 from calculator_1 import add, sub, mul, div
 
+a = 10
+b = 5
 if __name__ == "__main__":
-    a = 10
-    b = 5
     op = ['+', '-', '*', '/']
     op_func = [add, sub, mul, div]
     print(f"{a} {op[0]} {b} = {op_func[0](a, b)}")
