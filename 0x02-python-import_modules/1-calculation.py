@@ -1,0 +1,10 @@
+import calculator_1.py as calc
+
+if __import__ == "__main__":
+    a = 10
+    b = 5
+
+    print("{} + {} = {}".format(a, b, calc.add(a, b)))
+    print("{} - {} = {}".format(a, b, calc.sub(a, b)))
+    print("{} * {} = {}".format(a, b, calc.mul(a, b)))
+    print("{} / {} = {}".format(a, b, calc.div(a, b)))
