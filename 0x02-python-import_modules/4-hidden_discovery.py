@@ -1,4 +1,4 @@
-#!/usr/bin/python38
+#!/usr/bin/python3.8
 import hidden_4
 
 def print_names():
