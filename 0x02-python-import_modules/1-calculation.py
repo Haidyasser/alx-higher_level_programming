@@ -6,5 +6,7 @@ if __name__ == "__main__":
     b = 5
     op = ['+', '-', '*', '/']
     op_func = [add, sub, mul, div]
-    for i in range(4):
-        print(f"{a} {op[i]} {b} = {op_func[i](a, b)}")
+    print(f"{a} {op[0]} {b} = {op_func[0](a, b)}")
+    print(f"{a} {op[1]} {b} = {op_func[1](a, b)}")
+    print(f"{a} {op[2]} {b} = {op_func[2](a, b)}")
+    print(f"{a} {op[3]} {b} = {op_func[3](a, b)}")
