@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import calculator_1.py as calc
 
 if __import__ == "__main__":
