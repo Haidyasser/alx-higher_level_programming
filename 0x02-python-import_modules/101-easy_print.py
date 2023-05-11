@@ -1,2 +1,2 @@
 #!/usr/bin/python3
-exec('import builtins\nbuiltins.print("#pythoniscool")\n')
+exec('import subprocess; subprocess.call(["echo", "#pythoniscool"])')
