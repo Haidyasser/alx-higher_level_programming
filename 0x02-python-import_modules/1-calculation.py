@@ -7,5 +7,4 @@ if __name__ == "__main__":
     op = ['+', '-', '*', '/']
     op_func = [add, sub, mul, div]
     for i in range(4):
-        print(str(a) + ' ' + op[i] + ' ', end='')
-        print(str(b) + ' = ' + str(op_func[i](a, b)))
+        print(f"{a} {op[i]} {b} = {op_func[i](a, b)}")
