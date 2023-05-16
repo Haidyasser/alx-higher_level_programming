@@ -12,7 +12,7 @@ int is_palindrome(listint_t **head)
 	int len = 0, i = 0;
 	int *array;
 
-	if (*head == NULL)
+	if (*head == NULL || (*head)->next == NULL)
 		return (1);
 
 	while (current != NULL)
@@ -34,8 +34,11 @@ int is_palindrome(listint_t **head)
 	for (i = 0; i < len / 2; i++)
 	{
 		if (array[i] != array[len - i - 1])
-		return (0);
+		{
+			free(array);
+			return (0);
+		}
 	}
-
+	free(array);
 	return (1);
 }
