@@ -21,7 +21,7 @@ int is_palindrome(listint_t **head)
 		current = current->next;
 	}
 
-	int array[len];
+	array = malloc(sizeof(int) * len);
 
 	current = *head;
 	while (current != NULL)
@@ -35,8 +35,10 @@ int is_palindrome(listint_t **head)
 	{
 		if (array[i] != array[len - i - 1])
 		{
+			free(array);
 			return (0);
 		}
 	}
+	free(array);
 	return (1);
 }
