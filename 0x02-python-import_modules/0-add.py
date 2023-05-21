@@ -1,3 +1,4 @@
+#------------------------------------------------------------------------------
 #find last id in file
 def lastId():
     l = 0
@@ -5,21 +6,22 @@ def lastId():
         for line in file:
             l = line.split()[0]
     return int(l)
-
+ 
 # writing a record to a file
 def writeToFile():
-    ch = 'y'
+    
     with open("project1.txt", 'a') as file:
         Id = str(lastId() + 1)
         name = input("enter your name : ")
         age = input("enter age :  ")
         balance = input("Enter the amount of your balance : ")
         while int(balance) < 500 :
-            print("Sorry you can't create an account :( \n Your balance can't be less than <<500>> \n Put another maount  .... )")
+            print("Sorry you can't create an account :( \nYour balance can't be less than <<500>> \nPut another maount  .... )")
             balance = input("Enter the amount of your balance : ")
         file.write(Id + '\t' + name + '\t' + age + '\t' +balance+'\n')
         print("Record added sucessfully  :) ")
-#--------------------------------------------------------------------------- 
+
+#------------------------------------------------------------------------------------------------ 
 #read all data from a file
 def readFromFile():
     flag = False
@@ -52,7 +54,7 @@ def UpdateToFile():
                 print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
                 print(line, end="")
                 print("----------------------------------------")
-
+ 
                 ch = input("Do you want to update your name ? y/n ")
                 if ch == 'y':
                     name = input("Enter your new name : ")
@@ -68,7 +70,7 @@ def UpdateToFile():
                 l = line.split()
                 l[1] = name
                 l[2] = age
-                
+ 
                 tmp.write(l[0] + '\t' + l[1] + '\t' + l[2] + '\t' + l[3] + '\n' )
             else:
                 tmp.write(line)
@@ -117,81 +119,111 @@ def search():
                 print("Balance:",st[3])
         if not flag:
             print("Account not found!\n")
+            return False
+        else:
+            return True
 #--------------------------------------------------------------------------
-def dep(id,amt):
-    
+def dep():
     import os
+    
+    flag = search()
+    if flag == False:
+        return
+    id = input("Enter ID : ")
+    print("---------------------------------------")
+    amt=input("Enter amount to be deposited  : ")
+
     flag = False
     tmp = open("tmp.txt", "w")
     with open("project1.txt", "r") as file:
         for line in file:
-            l = line.split('\t')
-            
-            
-            if id == l[0]:
+            if line.startswith(id):
                 flag = True
-               
+                l = line.split('\t')
+                namee = l[1]
+                lastbal = l[3]
                 l[3] = int(l[3]) + int(amt)
+                newbal = l[3]
                 tmp.write(l[0] + '\t' + l[1] + '\t' + l[2] + '\t' + str(l[3]) + '\n')
-                print("Your Balance updated successfully ")
-
             else:
                 tmp.write(line)
-                      
+    
     tmp.close()
     os.remove("project1.txt")
     os.rename("tmp.txt", "project1.txt")
-    
+ 
     if flag == False:
         print("Your id not found")
     else:
         print("your Balance updated successfully ")
+        report(id , namee , lastbal , newbal)
 #---------------------------------------------------------------------------
-def withdraw(id):
+def withdraw():
     import os
+    flag = search()
+    if flag == False:
+        return
+    id = input("Enter ID : ")
     flag = False
     tmp = open("tmp.txt", "w")
     with open("project1.txt", "r") as file:
         for line in file:
             l = line.split('\t')
-            
-            
             if id == l[0]:
                 while flag == False :
                     print("---------------------------------------")
-                    amt = input(" Enter amount to be Withdrawed :  \n")
-                    
+                    amt = input("Enter amount to be Withdrawed :  \n")
+ 
                     if (int(l[3]) - int(amt) < 500 ) :
-                        print("Sorry you can't withdraw this amount :( \n Your balance can't be less than <<500>> \n Put another maount  .... )")
+                        print("Sorry you can't withdraw this amount :( \nYour balance can't be less than <<500>> \nPut another maount  .... )")
                     else :
                         flag = True
+                        iD = l[0]
+                        namee = l[1]
+                        lastbal = l[3]
                         l[3] = int(l[3]) - int(amt)
+                        newbal = l[3]
                         tmp.write(l[0] + '\t' + l[1] + '\t' + l[2] + '\t' + str(l[3]) + '\n')
-                        print("Your Balance updated successfully ")
 
             else:
                 tmp.write(line)
-                      
+ 
     tmp.close()
     os.remove("project1.txt")
     os.rename("tmp.txt", "project1.txt")
-    
+ 
     if flag == False:
         print("Your id not found")
     else:
         print("your Balance updated successfully ")
+    report(iD , namee , lastbal , newbal)
 #---------------------------------------------------------------------------
-def deposit_withdraw(op):
-    search()
-    id = input("Enter ID : ")
-    if (op == 1 ):
-        print("---------------------------------------")
-        amt=input(" Enter amount to be deposited  : ")
-        dep(id, amt )
- 
-    if (op == 2 ):
-        withdraw( id )            
-#--------------------------------------------------------------------------- 
+def report(iD , name , lastbal , newbal ) :
+    print("<< Employee Data  >>")
+    employee_name  = input("Emolyee Name  : ")
+    with open("report.txt" ,'a') as file :
+        print("debugging : ", newbal)
+        lastbal = str(lastbal)
+        lastbal = lastbal.strip()
+        file.write(str(iD) +'\t\t'+  str(name) + '\t\t' + str(lastbal) +'\t\t'+ str(newbal) + '\t\t' + employee_name + '\n')
+        print("\naddead to report succefully ^o^  ")
+        
+def readReport():
+
+     id = input("Enter the customer id  : ")
+     print("\n--------------")
+     print("| Islamic Bank |")
+     print(  "--------------")
+     print("--------------------------------------------------------------------------")
+     print("Customer ID\tCustomer Name\tLast Balance\tNewBalance\tEmployee Name")
+     print("--------------------------------------------------------------------------")
+
+     with open("report.txt", "r") as file:
+          for line in file:
+                if line.startswith(id):
+                    print(line, end="") 
+                    print("--------------------------------------------------------------------------")       
+#---------------------------------------------------------------------------
 # main function            
 def main():
         c='y'
@@ -217,15 +249,17 @@ def main():
             print("            -----------------------------")
             print("            | 7 | Show all Accounts     |")
             print("            -----------------------------")
-            
-            L = [writeToFile,deposit_withdraw,deposit_withdraw,search,DeleteRecordFromFile,UpdateToFile,readFromFile]
+            print("            | 8 | Show a report         |")
+            print("            -----------------------------")
+ 
+            L = [writeToFile,dep,withdraw,search,DeleteRecordFromFile,UpdateToFile,readFromFile ,readReport]
             op=input("\nEnter Number Of Transaction You Want: ") 
             try:
                 op = int(op)
                 L[op - 1]()
             except:
                 print("Invalid input")
-                    
+ 
             c=input("\nDo you want to continue?y/n.\n")
             if c=='n':
                 print("Thank you for using our system :)")
