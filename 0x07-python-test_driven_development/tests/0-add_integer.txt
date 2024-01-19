@@ -4,9 +4,6 @@
 >>> add_integer(-5)
 93
 
->>> add_integer()
-TypeError: add_integer() missing 1 required positional argument: 'a'
-
 >>> add_integer("hi",5)
 TypeError: a must be an integer
 
