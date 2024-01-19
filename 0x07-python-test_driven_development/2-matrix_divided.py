@@ -5,16 +5,16 @@
 def matrix_divided(matrix, div):
     """Divides all elements of a matrix and returns a new matrix."""
     if type(matrix) is not list or len(matrix) == 0:
-        raise TypeError("matrix must be a matrix (list of lists) of\
-                         integers/floats")
+        raise TypeError("matrix must be a matrix (list of lists) of \
+integers/floats")
     for r in matrix:
         if type(r) is not list:
-            raise TypeError("matrix must be a matrix (list of lists) of\
-                             integers/floats")
+            raise TypeError("matrix must be a matrix (list of lists) of \
+integers/floats")
         for c in r:
             if not isinstance(c, (int, float)):
-                raise TypeError("matrix must be a matrix (list of lists) of\
-                                 integers/floats")
+                raise TypeError("matrix must be a matrix (list of lists) of \
+integers/floats")
 
     sz = len(matrix[0])
     for r in matrix:
