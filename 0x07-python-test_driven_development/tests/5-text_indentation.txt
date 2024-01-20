@@ -1,0 +1,37 @@
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+>>> text_indentation("hi there. how are you? here is my function working:")
+hi there.
+
+ how are you?
+
+ here is my function working:
+
+>>> text_indentation(".?:")
+.
+
+?
+
+:
+
+>>> text_indentation("")
+>>> text_indentation('')
+>>> text_indentation("""df""")
+df>>> 
+>>> text_indentation()
+Traceback (most recent call last):
+TypeError: text_indentation() missing 1 required positional argument: 'text'
+>>> text_indentation(45)
+Traceback (most recent call last):
+TypeError: text must be a string
+>>> text_indentation(4.5)
+Traceback (most recent call last):
+TypeError: text must be a string
+>>> text_indentation(float('inf'))
+Traceback (most recent call last):
+TypeError: text must be a string
+>>> text_indentation(float('nan'))
+Traceback (most recent call last):
+TypeError: text must be a string
+>>> text_indentation(None)
+Traceback (most recent call last):
+TypeError: text must be a string
