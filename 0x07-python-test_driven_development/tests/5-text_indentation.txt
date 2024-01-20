@@ -2,9 +2,9 @@
 >>> text_indentation("hi there. how are you? here is my function working:")
 hi there.
 
- how are you?
+how are you?
 
- here is my function working:
+here is my function working:
 
 >>> text_indentation(".?:")
 .
@@ -15,6 +15,7 @@ hi there.
 
 >>> text_indentation("")
 >>> text_indentation('')
+>>> text_indentation(' ')
 >>> text_indentation("""df""")
 df>>> 
 >>> text_indentation()
