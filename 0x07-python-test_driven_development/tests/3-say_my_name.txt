@@ -1,0 +1,45 @@
+>>> say_my_name("haidy","yasser")
+My name is haidy yasser
+
+>>> say_my_name("haidy")
+My name is haidy 
+
+>>> say_my_name("h")
+My name is h 
+
+>>> say_my_name("")
+My name is  
+
+>>> say_my_name("", "")
+My name is  
+
+>>> say_my_name(45)
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+>>> say_my_name("", 87)
+Traceback (most recent call last):
+TypeError: last_name must be a string
+
+>>> say_my_name(None)
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+>>> say_my_name(b=None)
+Traceback (most recent call last):
+TypeError: say_my_name() got an unexpected keyword argument 'b'
+
+>>> say_my_name(a=4,b=None)
+Traceback (most recent call last):
+TypeError: say_my_name() got an unexpected keyword argument 'a'
+
+>>> say_my_name(a="", None)
+SyntaxError: positional argument follows keyword argument
+
+>>> say_my_name(a="", b=None)
+Traceback (most recent call last):
+TypeError: say_my_name() got an unexpected keyword argument 'a'
+
+>>> say_my_name(a=3.5)
+Traceback (most recent call last):
+TypeError: say_my_name() got an unexpected keyword argument 'a'
