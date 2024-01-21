@@ -1,18 +1,18 @@
 >>> text_indentation = __import__('5-text_indentation').text_indentation
 >>> text_indentation("hi there. how are you? here is my function working:")
 hi there.
-
+<BLANKLINE>
 how are you?
-
+<BLANKLINE>
 here is my function working:
-
+<BLANKLINE>
 >>> text_indentation(".?:")
 .
-
+<BLANKLINE>
 ?
-
+<BLANKLINE>
 :
-
+<BLANKLINE>
 >>> text_indentation("")
 >>> text_indentation('')
 >>> text_indentation(' ')
