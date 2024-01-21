@@ -6,7 +6,6 @@ def text_indentation(text):
     """a function that prints a text with 2 new lines after each of these"""
     if type(text) is not str:
         raise TypeError("text must be a string")
-    # lines = text.split("\n")
     subline = ""
     for c in text:
         subline += c
@@ -14,4 +13,3 @@ def text_indentation(text):
             print(subline.strip() + ("\n" if c in ".?:" else ""))
             subline = ""
     print(subline.strip(), end="")
-        
