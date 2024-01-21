@@ -6,12 +6,12 @@ def text_indentation(text):
     """a function that prints a text with 2 new lines after each of these"""
     if type(text) is not str:
         raise TypeError("text must be a string")
-    line = True
+    # lines = text.split("\n")
+    subline = ""
     for c in text:
-        if line is True and c == ' ':
-            continue
-        line = False
-        print(c, end="")
-        if c == '.' or c == '?' or c == ':':
-            print("\n")
-            line = True
+        subline += c
+        if c in ".?:\n":
+            print(subline.strip() + ("\n" if c in ".?:" else ""))
+            subline = ""
+    print(subline.strip(), end="")
+        
